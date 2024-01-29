@@ -31,9 +31,8 @@
   <main>
     {{- block "main" . }}{{- end }}
   </main>
-  <footer>
-    {{- partial "footer.html" . -}}
-  </footer>
+
+  {{- partial "footer.html" . -}}
 
   {{ range .Site.Params.plugins_js }}
     <script src="{{ . }}"></script>
