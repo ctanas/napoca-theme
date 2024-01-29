@@ -1,15 +1,15 @@
 {{ define "main" }}
 <div class="h-entry">
   {{ if .Title }}<h1 class="p-name">{{ .Title }}</h1>{{ end }}
-  <p>
+  <div class="microblog_time">
     <i>
-      <a href="{{ .Permalink }}" class="u-url">
-        <time datetime='{{ .Date.Format "2006-01-02" }}' class="dt-published">
+      <a href="{{ .Permalink }}">
+        <time datetime='{{ .Date.Format "2006-01-02" }}'>
           {{ .Date.Format (default "02 Jan, 2006" .Site.Params.dateFormat) }}
         </time>
       </a>
     </i>
-  </p>
+  </div>
   <div class="e-content">
     {{ .Content }}
   </div>
