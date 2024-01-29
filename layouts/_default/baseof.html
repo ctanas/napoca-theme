@@ -4,19 +4,24 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
   {{- partial "favicon.html" . -}}
-  <title>{{- block "title" . }}{{ with .Title }}{{ . }} | {{ end }}{{ .Site.Title }}{{- end }}</title>
+
+  <title>
+    {{ block "title" . }}
+    {{ if .IsHome }}
+      {{ .Site.Title }}
+    {{ else if .Title }}
+      {{ .Title }} | {{ .Site.Title }}
+    {{ else }}
+      {{ .Summary | plainify | truncate 40 }} | {{ .Site.Title }}
+    {{ end }}
+    {{ end }}
+  </title>
 
   {{- partial "seo_tags.html" . -}}
-  <meta name="referrer" content="no-referrer-when-downgrade" />
-
   {{- partial "style.html" . -}}
-
-  <!-- A partial to be overwritten by the user.
-  Simply place a custom_head.html into
-  your local /layouts/partials-directory -->
-  {{- partial "custom_head.html" . -}}
-  {{ partial "microblog_head.html" . }}
+  {{- partial "microblog_head.html" . -}}
 </head>
 
 <body>
@@ -29,11 +34,6 @@
   <footer>
     {{- partial "footer.html" . -}}
   </footer>
-
-  <!-- A partial to be overwritten by the user.
-  Simply place a custom_body.html into
-  your local /layouts/partials-directory -->
-  {{- partial "custom_body.html" . -}}
 
   {{ range .Site.Params.plugins_js }}
     <script src="{{ . }}"></script>
