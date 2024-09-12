@@ -9,7 +9,7 @@
 				<a href="{{ .Permalink }}" class="p-name">{{ .Title }}</a>
 			</h1>
 			{{ end }}
-			<div class="e-content">{{ .Content }} »<a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "02 Jan 2006" }}</time></a></div>		
+			<div class="e-content">{{ .Content }} <a href="{{ .Permalink }}" class="u-url"><time class="dt-published" datetime="{{ .Date.Format "2006-01-02 15:04:05 -0700" }}">{{ .Date.Format "02 Jan 2006" }}</time></a></div>		
         </div>
     {{ end }}
 </div>
